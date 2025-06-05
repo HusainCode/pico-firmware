@@ -1,13 +1,36 @@
-#  Purpose:
+# ┌──────────────────────────────────────────────────────────────────────────────┐
+# │                                Purpose:                                     │
+# │  A resilient network client module that handles secure HTTP POST            │
+# │  communication from the Pico microcontroller to the remote                  │
+# │  env-monitor-server.                                                        │
+# │                                                                              │
+# │  It includes retry logic, error handling, and human-readable interpretation │
+# │  of standard HTTP status codes.                                             │
+# └──────────────────────────────────────────────────────────────────────────────┘
 #
+# ┌──────────────────────────────────────────────────────────────────────────────┐
+# │                             Key Attributes:                                 │
+# │  - `https_status`: A dictionary mapping HTTP status codes to their          │
+# │                    explanations (used for debugging / logs).                │
+# └──────────────────────────────────────────────────────────────────────────────┘
 #
-#  Key Attributes:
+# ┌──────────────────────────────────────────────────────────────────────────────┐
+# │                             Main Methods:                                   │
+# │  - `safe_post_with_retry(url, headers, data, timeout, retries, backoff)`    │
+# │      Makes a POST request with exponential backoff and exception safety.    │
+# │      Ensures response is returned or fails clearly after retries.           │
+# └──────────────────────────────────────────────────────────────────────────────┘
 #
-#
-#  Main Methods:
-#
-#
-#  Example:
+# ┌──────────────────────────────────────────────────────────────────────────────┐
+# │                               Example:                                      │
+# │  client = NetworkClient()                                                   │
+# │  data = {"sensor": "dht22", "temp": 24.5}                                    │
+# │  headers = {"Authorization": "Bearer abc123"}                               │
+# │  resp = client.safe_post_with_retry("https://env-monitor-server/data",      │
+# │                                     headers=headers, data=data)             │
+# │  print(resp)                                                                │
+# └──────────────────────────────────────────────────────────────────────────────┘
+
 
 import requests
 import urequests
