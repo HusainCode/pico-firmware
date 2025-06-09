@@ -7,8 +7,7 @@ This firmware runs on a Raspberry Pi Pico (or compatible board) and collects sen
 ---
 
 ## 🧩 System Overview
-
-![Firmware Architecture](https://github.com/<your-username>/pico-firmware/blob/main/diagram.png) <!-- update this with real path if hosted -->
+![image](https://github.com/user-attachments/assets/3306849c-3da1-4027-8544-afb73674edfb)
 
 - **DHT22 Sensor** — Temperature & Humidity
 - **ENS160 Sensor** — eCO2 & TVOC
